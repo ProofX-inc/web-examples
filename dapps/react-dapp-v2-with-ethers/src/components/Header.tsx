@@ -48,25 +48,18 @@ const SActiveSession = styled(SActiveAccount as any)`
 `;
 
 interface HeaderProps {
-  ping: () => Promise<void>;
+  // ping: () => Promise<void>;
   disconnect: () => Promise<void>;
   session: SessionTypes.Struct | undefined;
 }
 
 const Header = (props: HeaderProps) => {
-  const { ping, disconnect, session } = props;
+  const { disconnect, session } = props;
   return (
     <SHeader {...props}>
       {session ? (
         <>
-          <SActiveSession>
-            <p>{`Connected to`}</p>
-            <p>{session.peer.metadata.name}</p>
-          </SActiveSession>
           <SHeaderActions>
-            <Button outline color="black" onClick={ping}>
-              {"Ping"}
-            </Button>
             <Button outline color="red" onClick={disconnect}>
               {"Disconnect"}
             </Button>
